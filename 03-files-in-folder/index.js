@@ -10,7 +10,12 @@ const { readdir } = require('fs/promises');
         if (err) {
           throw new Error(err.message);
         } else if (stats.isFile()) {
-          console.log(`${path.basename(file.name, path.extname(file.name))} - ${path.extname(file.name).slice(1)} - ${stats.size / 1024}kb`);
+          const fileName = path.basename(file.name, path.extname(file.name));
+          const fileExt = path.extname(file.name).slice(1);
+          const BITE_PER_KB = 1024;
+          const fileSizeInKb = stats.size / BITE_PER_KB;
+          
+          console.log(`${fileName} - ${fileExt} - ${fileSizeInKb}kb`);
         }
       });
   } catch (err) {
