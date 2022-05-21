@@ -8,7 +8,7 @@ const path = require('path');
     const files = await readdir(path.join(__dirname, 'files'));
     const filesCopy = await readdir(path.join(__dirname, 'files-copy'));
 
-    if (filesCopy) {
+    if (filesCopy.length) {
       for (const fileCopy of filesCopy) {
         unlink(path.join(__dirname, 'files-copy', fileCopy));
       }
